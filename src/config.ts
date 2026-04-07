@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "siloyuki's Blog",
 	lang: "ko", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
-		hue: 176, // Hatsune Miku teal (#39c5bb)
+		hue: 350, // Rose pink
 		fixed: true, // Hide the theme color picker for visitors
 	},
 	banner: {
@@ -53,7 +53,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png",
+	avatar: "assets/images/profile.png",
 	name: "siloyuki",
 	bio: "siloyuki's personal blog",
 	links: [
