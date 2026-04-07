@@ -6,7 +6,7 @@
 
 // Skip on touch/mobile devices
 if (window.matchMedia('(pointer: fine)').matches) {
-  const PETAL_COUNT = 10;
+  const PETAL_COUNT = 5;
   const PETAL_COLORS = ['#ffb7c5', '#ffc8d4', '#ff91aa', '#ffd1dc', '#ffadc0'];
 
   // Inline SVG petal shape — teardrop-like ellipse
