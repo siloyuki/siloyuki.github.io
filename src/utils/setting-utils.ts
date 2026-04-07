@@ -14,6 +14,9 @@ export function getDefaultHue(): number {
 }
 
 export function getHue(): number {
+	const configCarrier = document.getElementById("config-carrier");
+	const isFixed = configCarrier?.dataset.hueFixed === "true";
+	if (isFixed) return getDefaultHue();
 	const stored = localStorage.getItem("hue");
 	return stored ? Number.parseInt(stored, 10) : getDefaultHue();
 }
