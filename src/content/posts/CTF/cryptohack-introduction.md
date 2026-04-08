@@ -127,3 +127,23 @@ n = 1151519506386231889993168548881374739577551628728968263649996528271463725920
 
 print(bytes.fromhex(hex(n)[2:]).decode())
 ```
+
+### 7. XOR Starter
+
+13과 `"label"`을 XOR하는 문제다.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string s = "label";
+
+    for (int i = 0; i < s.length(); i++)
+    {
+        cout << (char)(s[i] ^ 13);
+    }
+}
+```
