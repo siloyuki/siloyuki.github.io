@@ -105,3 +105,15 @@ int main()
     cout << endl;
 }
 ```
+
+### 5. Base64 Encoding
+
+4번에 Base64 인코딩이 추가된 문제다. C++에서 Base64 로직을 직접 구현하는 건 번거로우므로 Python을 사용했다.
+
+```python
+import base64
+
+hex = "72bca9b68fc16ac7beeb8f849dca1d8a783e8acf9679bf9269f7bf"
+
+print(base64.b64encode(bytes.fromhex(hex)).decode())
+```
