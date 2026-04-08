@@ -200,7 +200,6 @@ hex 문자열을 디코딩한 뒤, 0~255 키로 브루트포스 XOR해 플래그
 플래그가 `crypto{`로 시작한다는 걸 이용하면 첫 바이트 `0x73 ^ key = 0x63('c')`에서 key = `0x10`(16)임을 바로 알 수 있다.
 
 ```cpp
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
 using namespace std;
