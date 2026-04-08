@@ -3,7 +3,7 @@ title: "CryptoHack 가입 및 Introduction 풀이"
 published: 2026-04-08
 description: "cryptohack.org 가입 후 Introduction to CryptoHack 카테고리 문제 풀이 정리"
 tags: [Crypto, CryptoHack, 암호학]
-category: Crypto
+category: CTF/Wargame
 draft: false
 ---
 
@@ -17,7 +17,7 @@ draft: false
 
 Caesar Cipher로 암호화된 문자열을 복호화하는 문제다.
 
-입력 문자열이 대문자로만 구성되어 있어 코드도 간단하게 작성할 수 있었다. shift 1~25를 전부 시도해 의미 있는 문장을 찾으면 된다.
+입력 문자열이 대문자로만 구성되어 있어 wrap-around도 `shifted -= 26` 한 줄로 처리할 수 있었다. shift 1~25를 전부 시도해 의미 있는 문장을 찾으면 된다.
 
 ```cpp
 #include <iostream>
