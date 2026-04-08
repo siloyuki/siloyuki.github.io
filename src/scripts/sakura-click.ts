@@ -29,7 +29,7 @@ interface PetalState {
 
 // Animate a single petal via rAF
 function animatePetal(state: PetalState): void {
-  state.vy += 0.20;   // gravity
+  state.vy += 0.13;   // gravity
   state.vx *= 0.97;   // horizontal drag
   state.x  += state.vx;
   state.y  += state.vy;
@@ -60,14 +60,14 @@ function spawnPetal(cx: number, cy: number, index: number): void {
   // Spread petals in a full circle with slight randomness
   const baseAngle = (index / PETAL_COUNT) * Math.PI * 2;
   const angle     = baseAngle + (Math.random() - 0.5) * 0.9;
-  const speed     = 2.5 + Math.random() * 3.5;
+  const speed     = 1.5 + Math.random() * 2.0;
 
   const state: PetalState = {
     el,
     x:         cx,
     y:         cy,
     vx:        Math.cos(angle) * speed,
-    vy:        Math.sin(angle) * speed - 4, // initial upward burst
+    vy:        Math.sin(angle) * speed - 2.5, // initial upward burst
     rotation:  Math.random() * 360,
     rotSpeed:  (Math.random() - 0.5) * 14,
     opacity:   1,
