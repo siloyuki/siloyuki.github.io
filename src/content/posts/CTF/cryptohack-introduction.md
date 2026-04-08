@@ -207,7 +207,7 @@ using namespace std;
 int main()
 {
     string hex = "73626960647f6b206821204f21254f7d694f7624662065622127234f726927756d";
-    string s = "";
+    string s;
 
     for (int i = 0; i < hex.length(); i += 2)
     {
