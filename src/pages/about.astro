@@ -18,20 +18,18 @@ import { url } from "../utils/url-utils";
             </div>
 
             <!-- 본문 -->
-            <div class="flex flex-col items-center py-12 px-6 gap-3">
+            <div class="flex flex-col items-start py-12 px-10 gap-3">
 
-                <!-- 이름 -->
-                <h1 class="text-4xl font-bold tracking-widest dark:text-neutral-50 transition">
-                    이준한
-                </h1>
-
-                <!-- 한자 풀이 -->
-                <p class="text-sm text-neutral-400 tracking-wider transition">
-                    오얏 리&nbsp;&nbsp;·&nbsp;&nbsp;높을 준&nbsp;&nbsp;·&nbsp;&nbsp;한나라 한
-                </p>
+                <!-- 이름 + 한자 -->
+                <div class="flex items-baseline gap-3">
+                    <h1 class="text-4xl font-bold tracking-widest dark:text-neutral-50 transition">
+                        이준한
+                    </h1>
+                    <span class="text-xl text-neutral-400 tracking-wider transition">李俊漢</span>
+                </div>
 
                 <!-- 구분선 -->
-                <div class="h-px w-16 bg-[var(--primary)] rounded-full my-2 transition"></div>
+                <div class="h-px w-16 bg-[var(--primary)] rounded-full my-1 transition"></div>
 
                 <!-- 소속 -->
                 <p class="text-base text-neutral-500 dark:text-neutral-400 transition">
@@ -41,7 +39,7 @@ import { url } from "../utils/url-utils";
                 <!-- 이메일 -->
                 <a
                     href="mailto:siloyuki@korea.ac.kr"
-                    class="mt-1 text-sm text-[var(--primary)] hover:underline underline-offset-4 transition"
+                    class="text-sm text-[var(--primary)] hover:underline underline-offset-4 transition"
                 >
                     siloyuki@korea.ac.kr
                 </a>
