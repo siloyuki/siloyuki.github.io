@@ -9,16 +9,21 @@ import { url } from "../utils/url-utils";
         <div class="card-base z-10 relative w-full overflow-hidden">
 
             <!-- 배너 이미지 -->
-            <div class="w-full h-56 md:h-72 overflow-hidden">
-                <img
-                    src={url('/banner-profile.png')}
-                    alt="banner"
-                    class="w-full h-full object-cover object-center"
-                />
+            <div class="px-6 pt-6">
+                <div class="w-full h-56 md:h-72 overflow-hidden rounded-xl">
+                    <img
+                        src={url('/banner-profile.png')}
+                        alt="banner"
+                        class="w-full h-full object-cover object-center"
+                    />
+                </div>
             </div>
 
             <!-- 본문 -->
             <div class="flex flex-col items-start py-12 px-10 gap-3">
+
+                <!-- 타이틀 -->
+                <p class="text-xs font-semibold tracking-[0.2em] text-[var(--primary)] uppercase mb-1 transition">About Me</p>
 
                 <!-- 이름 + 한자 -->
                 <div class="flex items-baseline gap-3">
