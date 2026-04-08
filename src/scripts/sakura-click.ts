@@ -84,6 +84,13 @@ function burst(x: number, y: number): void {
   }
 }
 
-document.addEventListener('click', (e: MouseEvent) => {
+// Store handler on window to prevent duplicate registration across Swup navigations
+function handleClick(e: MouseEvent) {
   burst(e.clientX, e.clientY);
-});
+}
+
+if ((window as any).__sakuraHandler) {
+  document.removeEventListener('click', (window as any).__sakuraHandler);
+}
+(window as any).__sakuraHandler = handleClick;
+document.addEventListener('click', handleClick);
