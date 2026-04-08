@@ -25,22 +25,26 @@ interface PetalState {
   rotation: number;
   rotSpeed: number;
   opacity: number;
+  lastTime: number;
 }
 
-// Animate a single petal via rAF
-function animatePetal(state: PetalState): void {
-  state.vy += 0.13;   // gravity
-  state.vx *= 0.97;   // horizontal drag
-  state.x  += state.vx;
-  state.y  += state.vy;
-  state.rotation += state.rotSpeed;
-  state.opacity  -= 0.024;
+// Animate a single petal via rAF — delta time normalized to 60fps
+function animatePetal(state: PetalState, now: number): void {
+  const dt = Math.min((now - state.lastTime) / (1000 / 60), 3); // cap at 3x to avoid jumps on tab switch
+  state.lastTime = now;
+
+  state.vy += 0.13 * dt;
+  state.vx *= Math.pow(0.97, dt);
+  state.x  += state.vx * dt;
+  state.y  += state.vy * dt;
+  state.rotation += state.rotSpeed * dt;
+  state.opacity  -= 0.024 * dt;
 
   state.el.style.transform = `translate(${state.x - 9}px,${state.y - 9}px) rotate(${state.rotation}deg)`;
   state.el.style.opacity   = String(state.opacity);
 
   if (state.opacity > 0) {
-    requestAnimationFrame(() => animatePetal(state));
+    requestAnimationFrame((t) => animatePetal(state, t));
   } else {
     state.el.remove();
   }
@@ -71,10 +75,11 @@ function spawnPetal(cx: number, cy: number, index: number): void {
     rotation:  Math.random() * 360,
     rotSpeed:  (Math.random() - 0.5) * 14,
     opacity:   1,
+    lastTime:  performance.now(),
   };
 
   // Stagger launch slightly so petals don't all start at the exact same frame
-  setTimeout(() => requestAnimationFrame(() => animatePetal(state)), index * 18);
+  setTimeout(() => requestAnimationFrame((t) => animatePetal(state, t)), index * 18);
 }
 
 // Burst all petals at click position
