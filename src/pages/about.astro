@@ -1,25 +1,53 @@
 ---
-
-import { getEntry, render } from "astro:content";
-import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-
-const aboutPost = await getEntry("spec", "about");
-
-if (!aboutPost) {
-	throw new Error("About page content not found");
-}
-
-const { Content } = await render(aboutPost);
+import { url } from "../utils/url-utils";
 ---
 <MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-        <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="mt-2">
-                <Content />
-            </Markdown>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative">
+        <div class="card-base z-10 relative w-full overflow-hidden">
+
+            <!-- 배너 이미지 -->
+            <div class="w-full h-56 md:h-72 overflow-hidden">
+                <img
+                    src={url('/banner-profile.png')}
+                    alt="banner"
+                    class="w-full h-full object-cover object-center"
+                />
+            </div>
+
+            <!-- 본문 -->
+            <div class="flex flex-col items-center py-12 px-6 gap-3">
+
+                <!-- 이름 -->
+                <h1 class="text-4xl font-bold tracking-widest dark:text-neutral-50 transition">
+                    이준한
+                </h1>
+
+                <!-- 한자 풀이 -->
+                <p class="text-sm text-neutral-400 tracking-wider transition">
+                    오얏 리&nbsp;&nbsp;·&nbsp;&nbsp;높을 준&nbsp;&nbsp;·&nbsp;&nbsp;한나라 한
+                </p>
+
+                <!-- 구분선 -->
+                <div class="h-px w-16 bg-[var(--primary)] rounded-full my-2 transition"></div>
+
+                <!-- 소속 -->
+                <p class="text-base text-neutral-500 dark:text-neutral-400 transition">
+                    고려대학교 컴퓨터학과 재학 중
+                </p>
+
+                <!-- 이메일 -->
+                <a
+                    href="mailto:siloyuki@korea.ac.kr"
+                    class="mt-1 text-sm text-[var(--primary)] hover:underline underline-offset-4 transition"
+                >
+                    siloyuki@korea.ac.kr
+                </a>
+
+            </div>
+
         </div>
     </div>
 </MainGridLayout>
