@@ -62,6 +62,16 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:github",
 			url: "https://github.com/siloyuki",
 		},
+		{
+			name: "Instagram",
+			icon: "fa6-brands:instagram",
+			url: "https://instagram.com/shuu4na",
+		},
+		{
+			name: "Discord",
+			icon: "fa6-brands:discord",
+			url: "https://discord.com/users/choi._3",
+		},
 	],
 };
 
