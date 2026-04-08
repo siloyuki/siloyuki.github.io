@@ -192,3 +192,39 @@ string Xor_Hex(string a, string b)
     return result;
 }
 ```
+
+### 9. Favourite byte
+
+hex 문자열을 디코딩한 뒤, 0~255 키로 브루트포스 XOR해 플래그를 찾는 문제다.
+
+플래그가 `crypto{`로 시작한다는 걸 이용하면 첫 바이트 `0x73 ^ key = 0x63('c')`에서 key = `0x10`(16)임을 바로 알 수 있다.
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string hex = "73626960647f6b206821204f21254f7d694f7624662065622127234f726927756d";
+    string s = "";
+
+    for (int i = 0; i < hex.length(); i += 2)
+    {
+        s += (char)stoi(hex.substr(i, 2), nullptr, 16);
+    }
+
+    for (int key = 0; key <= 255; key++)
+    {
+        cout << key << ": ";
+        for (int i = 0; i < s.length(); i++)
+        {
+            cout << (char)(s[i] ^ key);
+        }
+        cout << endl;
+    }
+}
+```
+
+출력 중 `16:` 줄에서 플래그 `crypto{0x10_15_my_f4v0ur173_by7e}`가 나온다.
