@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Pretendard", "sans-serif", ...defaultTheme.fontFamily.sans],
+        sans: ["Noto Sans KR", "sans-serif", ...defaultTheme.fontFamily.sans],
+        gowun: ["Gowun Dodum", "sans-serif"],
       },
     },
   },
