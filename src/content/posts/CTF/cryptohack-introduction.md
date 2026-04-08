@@ -82,3 +82,26 @@ int main()
     }
 }
 ```
+
+### 4. Hex to ASCII
+
+hex 문자열을 2자리씩 잘라 `stoi`로 16진수 변환 후 `(char)` 캐스팅했다.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string hex = "63727970746f7b596f755f77696c6c5f62655f776f726b696e675f776974685f6865785f737472696e67735f615f6c6f747d";
+
+    for (int i = 0; i < hex.length(); i += 2)
+    {
+        string s = hex.substr(i, 2);
+        char c = (char)stoi(s, nullptr, 16);
+        cout << c;
+    }
+    cout << endl;
+}
+```
