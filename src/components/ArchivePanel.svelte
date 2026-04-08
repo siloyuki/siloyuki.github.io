@@ -9,11 +9,6 @@ export let tags: string[];
 export let categories: string[];
 export let sortedPosts: Post[] = [];
 
-const params = new URLSearchParams(window.location.search);
-tags = params.has("tag") ? params.getAll("tag") : [];
-categories = params.has("category") ? params.getAll("category") : [];
-const uncategorized = params.get("uncategorized");
-
 interface Post {
 	slug: string;
 	data: {
@@ -41,7 +36,12 @@ function formatTag(tagList: string[]) {
 	return tagList.map((t) => `#${t}`).join(" ");
 }
 
-onMount(async () => {
+function applyFilter() {
+	const params = new URLSearchParams(window.location.search);
+	tags = params.has("tag") ? params.getAll("tag") : [];
+	categories = params.has("category") ? params.getAll("category") : [];
+	const uncategorized = params.get("uncategorized");
+
 	let filteredPosts: Post[] = sortedPosts;
 
 	if (tags.length > 0) {
@@ -82,6 +82,14 @@ onMount(async () => {
 	groupedPostsArray.sort((a, b) => b.year - a.year);
 
 	groups = groupedPostsArray;
+}
+
+onMount(() => {
+	applyFilter();
+
+	// Re-apply filter on Swup page navigation (handles query string changes)
+	document.addEventListener("swup:page:view", applyFilter);
+	return () => document.removeEventListener("swup:page:view", applyFilter);
 });
 </script>
 
