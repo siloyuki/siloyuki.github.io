@@ -53,7 +53,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/profile.png",
+	avatar: "assets/images/profile.jpg",
 	name: "siloyuki",
 	bio: "Computer Science @ Korea Univ.",
 	links: [
