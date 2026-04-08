@@ -2,19 +2,42 @@
 import I18nKey from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
 import { getCategoryList } from "../../utils/content-utils";
+import { getCategoryUrl } from "../../utils/url-utils";
 import ButtonLink from "../control/ButtonLink.astro";
 import WidgetLayout from "./WidgetLayout.astro";
 
-const categories = await getCategoryList();
+const PRESET_CATEGORIES = [
+    "개발",
+    "CTF/Wargame",
+    "BugBounty",
+    "블로그/기술문서",
+    "논문/컨퍼런스",
+    "공모전/자격증",
+];
+
+const fetched = await getCategoryList();
+const countMap: Record<string, number> = Object.fromEntries(fetched.map(c => [c.name, c.count]));
+
+const categories = PRESET_CATEGORIES.map(name => ({
+    name,
+    count: countMap[name] ?? 0,
+    url: getCategoryUrl(name),
+}));
+
+// append any categories from posts not in the preset list
+for (const c of fetched) {
+    if (!PRESET_CATEGORIES.includes(c.name)) {
+        categories.push(c);
+    }
+}
 
 const COLLAPSED_HEIGHT = "7.5rem";
 const COLLAPSE_THRESHOLD = 5;
-
 const isCollapsed = categories.length >= COLLAPSE_THRESHOLD;
 
 interface Props {
-	class?: string;
-	style?: string;
+    class?: string;
+    style?: string;
 }
 const className = Astro.props.class;
 const style = Astro.props.style;
