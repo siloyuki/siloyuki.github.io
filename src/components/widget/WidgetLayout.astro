@@ -23,8 +23,11 @@ const className = Astro.props.class;
     </div>
     {isCollapsed && <div class="expand-btn px-4 -mb-2">
         <button class="btn-plain rounded-lg w-full h-9">
-            <div class="text-[var(--primary)] flex items-center justify-center gap-2 -translate-x-2">
+            <div class="expand-label text-[var(--primary)] flex items-center justify-center gap-2 -translate-x-2">
                 <Icon name="material-symbols:more-horiz" class="text-[1.75rem]"></Icon> {i18n(I18nKey.more)}
+            </div>
+            <div class="collapse-label hidden text-[var(--primary)] flex items-center justify-center gap-2 -translate-x-2">
+                <Icon name="material-symbols:keyboard-arrow-up-rounded" class="text-[1.75rem]"></Icon> 접기
             </div>
         </button>
     </div>}
@@ -46,10 +49,20 @@ const className = Astro.props.class;
 
             const id = this.dataset.id;
             const btn = this.querySelector('.expand-btn');
-            const wrapper = this.querySelector(`#${id}`)
+            const wrapper = this.querySelector(`#${id}`);
+            const expandLabel = this.querySelector('.expand-label');
+            const collapseLabel = this.querySelector('.collapse-label');
             btn!.addEventListener('click', () => {
-                wrapper!.classList.remove('collapsed');
-                btn!.classList.add('hidden');
+                const isExpanded = !wrapper!.classList.contains('collapsed');
+                if (isExpanded) {
+                    wrapper!.classList.add('collapsed');
+                    expandLabel!.classList.remove('hidden');
+                    collapseLabel!.classList.add('hidden');
+                } else {
+                    wrapper!.classList.remove('collapsed');
+                    expandLabel!.classList.add('hidden');
+                    collapseLabel!.classList.remove('hidden');
+                }
             })
         }
     }
