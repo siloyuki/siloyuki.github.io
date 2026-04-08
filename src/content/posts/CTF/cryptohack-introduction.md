@@ -195,7 +195,7 @@ string Xor_Hex(string a, string b)
 
 ### 9. Favourite byte
 
-hex 문자열을 디코딩한 뒤, 0~255 키로 노가다(멋있는 말로 브루트포스) XOR해 플래그를 찾는 문제다.
+hex 문자열을 디코딩한 뒤, 0~255 키로 노가다(멋있는 말로 브루트 포스) XOR해 플래그를 찾는 문제다.
 
 ```cpp
 #include <iostream>
