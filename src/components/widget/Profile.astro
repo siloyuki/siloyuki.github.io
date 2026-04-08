@@ -6,9 +6,9 @@ import ImageWrapper from "../misc/ImageWrapper.astro";
 
 const config = profileConfig;
 ---
-<div class="card-base overflow-hidden">
-    <!-- Twitter-style banner -->
-    <div class="relative h-24 w-full overflow-hidden">
+<div class="card-base">
+    <!-- Twitter-style banner — 카드 상단 모서리에만 overflow-hidden 적용 -->
+    <div class="relative h-24 w-full overflow-hidden rounded-t-[var(--radius-large)]">
         <img src={url('/sidebar-banner.png')} alt="Profile Banner" class="w-full h-full object-cover object-center" />
     </div>
     <!-- Avatar overlapping the banner -->
