@@ -1,5 +1,4 @@
 ---
-import "../styles/pretendard.css";
 import "../styles/mouse.css";
 
 import ConfigCarrier from "@components/ConfigCarrier.astro";
@@ -168,6 +167,10 @@ const bannerOffset =
 	'banner-height-home': `${BANNER_HEIGHT_HOME}vh`,
 	'banner-height': `${BANNER_HEIGHT}vh`,
 }}>
+html, body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
 @tailwind components;
 @layer components {
 	.enable-banner.is-home #banner-wrapper {
