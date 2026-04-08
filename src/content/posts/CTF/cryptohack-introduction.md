@@ -13,6 +13,31 @@ draft: false
 
 가입하려면 **Roman emperor's cipher** 문제를 직접 풀어야 한다.
 
+## Introduction to CryptoHack
+
+가입 후 풀 수 있는 입문 카테고리. 1, 2번은 플래그를 그대로 받아쓰는 문제라 생략.
+
+### 3. ASCII Numbers
+
+아스키코드 배열을 문자로 변환하면 플래그가 나오는 문제다. `(char)` 캐스팅으로 처리했다.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[] = { 99, 114, 121, 112, 116, 111, 123, 65, 83, 67, 73, 73, 95, 112, 114, 49, 110, 116, 52, 98, 108, 51, 125 };
+
+    for (int i = 0; i < size(arr); i++)
+    {
+        cout << (char)arr[i];
+    }
+}
+```
+
+---
+
 ## Roman emperor's cipher
 
 Caesar Cipher로 암호화된 문자열을 복호화하는 문제다.
