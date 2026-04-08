@@ -229,7 +229,7 @@ int main()
 
 반복 키 XOR 암호문에서 키를 복구하는 문제다.
 
-플래그가 `crypto{`로 시작한다는 걸 알고 있으므로, 암호문의 앞 7바이트와 `crypto{`를 XOR하면 키의 앞 7자를 바로 얻을 수 있다. 키 길이와 known plaintext 길이가 달라 키 전체를 한 번에 복구할 수는 없지만, 출력에서 반복되는 패턴을 보면 키가 `myXORkey`임을 알 수 있다.
+`s.length()`와 `known.length()`가 다르다는 점을 이용해야 한다. 플래그가 `crypto{`로 시작한다는 걸 알고 있으므로, 암호문과 `crypto{`를 XOR하면 키의 일부를 복구할 수 있다.
 
 **Step 1 — 키 복구**
 
@@ -284,8 +284,7 @@ int main()
 }
 ```
 
-플래그 `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`가 나온다.
 
 ---
 
-마무리. python 공부할게요.
+**마무리. python 공부할게요.**
