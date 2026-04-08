@@ -197,8 +197,6 @@ string Xor_Hex(string a, string b)
 
 hex 문자열을 디코딩한 뒤, 0~255 키로 브루트포스 XOR해 플래그를 찾는 문제다.
 
-플래그가 `crypto{`로 시작한다는 걸 이용하면 첫 바이트 `0x73 ^ key = 0x63('c')`에서 key = `0x10`(16)임을 바로 알 수 있다.
-
 ```cpp
 #include <iostream>
 #include <string>
@@ -226,7 +224,6 @@ int main()
 }
 ```
 
-출력 중 `16:` 줄에서 플래그 `crypto{0x10_15_my_f4v0ur173_by7e}`가 나온다.
 
 ### 10. You're My Type
 
