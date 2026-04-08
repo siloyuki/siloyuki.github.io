@@ -6,19 +6,26 @@ import ImageWrapper from "../misc/ImageWrapper.astro";
 
 const config = profileConfig;
 ---
-<div class="card-base p-3">
+<div class="card-base overflow-hidden">
+    <!-- Twitter-style banner -->
+    <div class="relative h-24 w-full overflow-hidden">
+        <img src={url('/banner-profile.png')} alt="Profile Banner" class="w-full h-full object-cover object-center" />
+    </div>
+    <!-- Avatar overlapping the banner -->
+    <div class="px-3 pb-3">
     <a aria-label="Go to About Page" href={url('/about/')}
-       class="group block relative mx-auto mt-1 lg:mt-0 mb-3
-       max-w-[8rem] lg:max-w-[10rem] overflow-hidden rounded-xl active:scale-95">
+       class="group block relative -mt-10 mb-3
+       max-w-[5rem] lg:max-w-[6rem] overflow-hidden rounded-xl active:scale-95
+       ring-4 ring-[var(--card-bg)] transition">
         <div class="absolute transition pointer-events-none group-hover:bg-black/30 group-active:bg-black/50
         w-full h-full z-50 flex items-center justify-center">
             <Icon name="fa6-regular:address-card"
-                  class="transition opacity-0 scale-90 group-hover:scale-100 group-hover:opacity-100 text-white text-5xl">
+                  class="transition opacity-0 scale-90 group-hover:scale-100 group-hover:opacity-100 text-white text-4xl">
             </Icon>
         </div>
         <ImageWrapper src={config.avatar || ""} alt="Profile Image of the Author" class="mx-auto lg:w-full h-full lg:mt-0 "></ImageWrapper>
     </a>
-    <div class="px-2">
+    <div class="px-1">
         <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">{config.name}</div>
         <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
         <div class="text-center text-neutral-400 mb-2.5 transition">{config.bio}</div>
@@ -40,6 +47,7 @@ const config = profileConfig;
                 {config.links[0].name}
             </a>}
         </div>
+    </div>
     </div>
 </div>
 
