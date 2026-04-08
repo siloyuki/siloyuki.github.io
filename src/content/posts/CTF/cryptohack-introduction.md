@@ -288,3 +288,7 @@ int main()
 ```
 
 플래그 `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`가 나온다.
+
+---
+
+마무리. python 공부할게요.
