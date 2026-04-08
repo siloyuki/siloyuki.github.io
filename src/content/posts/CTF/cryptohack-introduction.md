@@ -147,3 +147,48 @@ int main()
     }
 }
 ```
+
+### 8. XOR Properties
+
+XOR의 연산법칙에 관한 문제다.
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <string>
+using namespace std;
+
+string Xor_Hex(string a, string b);
+
+int main()
+{
+    string key1 = "a6c8b6733c9b22de7bc0253266a3867df55acde8635e19c73313";
+    string k2frk1 = "37dcb292030faa90d07eec17e3b1c6d8daf94c35d4c9191a5e1e";
+    string k3frk2 = "c1545756687e7573db23aa1c3452a098b71a7fbf0fddddde5fc1";
+    string flagfrk3 = "04ee9855208a2cd59091d04767ae47963170d1660df7f56f5faf";
+    
+    string key2 = Xor_Hex(key1, k2frk1);
+    string key3 = Xor_Hex(key2, k3frk2);
+    string flag = Xor_Hex(Xor_Hex(Xor_Hex(key2, flagfrk3), key3), key1);
+
+    for (int i = 0; i < flag.length(); i += 2)
+    {
+        cout << (char)stoi(flag.substr(i, 2), nullptr, 16);
+    }
+}
+
+string Xor_Hex(string a, string b)
+{
+    string result;
+    for (int i = 0; i < a.length(); i += 2)
+    {
+        int ia = stoi(a.substr(i, 2), nullptr, 16);
+        int ib = stoi(b.substr(i, 2), nullptr, 16);
+        char c[3];
+
+        sprintf(c, "%02x", ia ^ ib);
+        result += c;
+    }
+    return result;
+}
+```
