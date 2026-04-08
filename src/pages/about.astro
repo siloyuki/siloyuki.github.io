@@ -3,12 +3,13 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import { url } from "../utils/url-utils";
+import { Icon } from "astro-icon/components";
 ---
 <MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative">
         <div class="card-base z-10 relative w-full overflow-hidden">
 
-            <!-- 배너 이미지 + About Me 오버레이 -->
+            <!-- 배너 -->
             <div class="px-6 pt-6">
                 <div class="relative w-full h-72 md:h-96 overflow-hidden rounded-xl">
                     <img
@@ -16,9 +17,7 @@ import { url } from "../utils/url-utils";
                         alt="banner"
                         class="w-full h-full object-cover object-center"
                     />
-                    <!-- 하단 그라디언트 -->
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <!-- About Me 텍스트 -->
                     <div class="absolute bottom-6 left-7">
                         <p class="text-4xl md:text-5xl font-bold text-white tracking-widest drop-shadow-lg">About Me</p>
                     </div>
@@ -26,33 +25,102 @@ import { url } from "../utils/url-utils";
             </div>
 
             <!-- 본문 -->
-            <div class="flex flex-col items-start py-12 px-10 gap-3">
+            <div class="flex flex-col py-12 px-10 gap-10">
 
-                <!-- 이름 + 한자 -->
-                <div class="flex items-baseline gap-3">
-                    <h1 class="text-4xl font-bold tracking-widest dark:text-neutral-50 transition">
-                        이준한
-                    </h1>
-                    <span class="text-xl text-neutral-400 tracking-wider transition">李埈漢</span>
+                <!-- 이름 -->
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-baseline gap-3 flex-wrap">
+                        <h1 class="text-4xl font-bold tracking-widest dark:text-neutral-50 transition">이준한</h1>
+                        <span class="text-xl text-neutral-400 tracking-wider transition">李埈漢</span>
+                    </div>
+                    <div class="h-px w-16 bg-[var(--primary)] rounded-full transition"></div>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 transition">
+                        고려대학교 컴퓨터학과 재학 중
+                    </p>
                 </div>
 
-                <!-- 구분선 -->
-                <div class="h-px w-16 bg-[var(--primary)] rounded-full my-1 transition"></div>
+                <!-- Skills -->
+                <div class="flex flex-col gap-4">
+                    <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--primary)] transition">Skills</h2>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-start gap-4 flex-wrap">
+                            <span class="text-xs text-neutral-400 dark:text-neutral-500 w-20 pt-1 transition">Languages</span>
+                            <div class="flex gap-2 flex-wrap">
+                                {['C++', 'C#'].map(lang => (
+                                    <span class="px-3 py-1 rounded-md text-xs font-semibold
+                                        bg-[oklch(0.94_0.03_var(--hue))] text-[oklch(0.50_0.12_var(--hue))]
+                                        dark:bg-[oklch(0.22_0.03_var(--hue))] dark:text-[oklch(0.75_0.14_var(--hue))]
+                                        transition">
+                                        {lang}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 flex-wrap">
+                            <span class="text-xs text-neutral-400 dark:text-neutral-500 w-20 pt-1 transition">Tools</span>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="px-3 py-1 rounded-md text-xs font-semibold
+                                    bg-[oklch(0.94_0.03_var(--hue))] text-[oklch(0.50_0.12_var(--hue))]
+                                    dark:bg-[oklch(0.22_0.03_var(--hue))] dark:text-[oklch(0.75_0.14_var(--hue))]
+                                    transition">
+                                    Unity
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- 소속 -->
-                <p class="text-base text-neutral-500 dark:text-neutral-400 transition">
-                    고려대학교 컴퓨터학과 재학 중
-                </p>
+                <!-- Projects -->
+                <div class="flex flex-col gap-4">
+                    <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--primary)] transition">Projects</h2>
+                    <div class="flex flex-col gap-5">
+                        <div class="flex flex-col gap-2 pl-4 border-l-2 border-[oklch(0.70_0.14_var(--hue)_/_0.35)] dark:border-[oklch(0.75_0.14_var(--hue)_/_0.35)] transition">
+                            <div class="flex items-baseline gap-3 flex-wrap">
+                                <span class="font-bold dark:text-neutral-100 transition">JJAPGEKI</span>
+                                <span class="text-xs text-neutral-400 transition">2024.03 — 2025.09</span>
+                            </div>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed transition">
+                                아케이드 리듬게임 O.N.G.E.K.I 컨셉의 PC 구현체.
+                                아두이노 기반 전용 컨트롤러 직접 설계 및 제작.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- 이메일 -->
-                <p class="text-sm text-neutral-500 dark:text-neutral-400 transition">
-                    이메일 : <a href="mailto:siloyuki@korea.ac.kr" class="text-[var(--primary)] hover:underline underline-offset-4 transition">siloyuki@korea.ac.kr</a>
-                </p>
+                <!-- Interests -->
+                <div class="flex flex-col gap-4">
+                    <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--primary)] transition">Interests</h2>
+                    <div class="flex gap-2 flex-wrap">
+                        {['VOCALOID', 'Rhythm Game'].map(item => (
+                            <span class="px-3 py-1 rounded-full text-xs text-neutral-500 dark:text-neutral-400
+                                border border-[oklch(0.70_0.14_var(--hue)_/_0.30)] dark:border-[oklch(0.75_0.14_var(--hue)_/_0.30)]
+                                transition">
+                                {item}
+                            </span>
+                        ))}
+                    </div>
+                </div>
 
-                <!-- 인스타그램 -->
-                <p class="text-sm text-neutral-500 dark:text-neutral-400 transition">
-                    Instagram : <a href="https://www.instagram.com/shuu4na/" target="_blank" class="text-[var(--primary)] hover:underline underline-offset-4 transition">@shuu4na</a>
-                </p>
+                <!-- Contact -->
+                <div class="flex flex-col gap-4">
+                    <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--primary)] transition">Contact</h2>
+                    <div class="flex flex-col gap-3">
+                        <a href="mailto:siloyuki@korea.ac.kr"
+                           class="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400 hover:text-[var(--primary)] dark:hover:text-[var(--primary)] transition group w-fit">
+                            <Icon name="fa6-solid:envelope" class="text-[var(--primary)] opacity-60 group-hover:opacity-100 transition text-sm" />
+                            siloyuki@korea.ac.kr
+                        </a>
+                        <a href="https://www.instagram.com/shuu4na/" target="_blank"
+                           class="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400 hover:text-[var(--primary)] dark:hover:text-[var(--primary)] transition group w-fit">
+                            <Icon name="fa6-brands:instagram" class="text-[var(--primary)] opacity-60 group-hover:opacity-100 transition text-sm" />
+                            @shuu4na
+                        </a>
+                        <div class="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400 transition">
+                            <Icon name="fa6-brands:discord" class="text-[var(--primary)] opacity-60 transition text-sm" />
+                            choi._3
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
