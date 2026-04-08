@@ -11,11 +11,13 @@ draft: false
 
 [CryptoHack](https://cryptohack.org)은 암호학 문제를 풀며 공부할 수 있는 워게임 플랫폼이다.
 
-가입하려면 단순히 이메일을 입력하는 게 아니라, **Roman emperor's cipher** 문제를 직접 풀어야 회원가입이 완료된다. 시저 암호(Caesar Cipher)로 암호화된 문자열을 해독하는 문제다.
+가입하려면 **Roman emperor's cipher** 문제를 직접 풀어야 한다.
 
-## 풀이
+## Roman emperor's cipher
 
-시저 암호는 알파벳을 일정 칸만큼 밀어 암호화하는 방식이다. 키를 모르므로 1~25 모든 경우를 출력해 의미 있는 문장을 찾으면 된다.
+Caesar Cipher로 암호화된 문자열을 복호화하는 문제다.
+
+입력 문자열이 대문자로만 구성되어 있어 코드도 간단하게 작성할 수 있었다. shift 1~25를 전부 시도해 의미 있는 문장을 찾으면 된다.
 
 ```cpp
 #include <iostream>
@@ -55,7 +57,3 @@ int main()
     }
 }
 ```
-
-암호화된 문자열을 입력하면 shift 1~25 결과를 전부 출력한다. 출력 중 자연스러운 영어 문장이 보이는 시점이 정답이다.
-
-가입에 성공하면 이후 Introduction to CryptoHack 카테고리 문제를 풀 수 있다.
