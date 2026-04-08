@@ -227,3 +227,64 @@ int main()
 ```
 
 출력 중 `16:` 줄에서 플래그 `crypto{0x10_15_my_f4v0ur173_by7e}`가 나온다.
+
+### 10. You're My Type
+
+반복 키 XOR 암호문에서 키를 복구하는 문제다.
+
+플래그가 `crypto{`로 시작한다는 걸 알고 있으므로, 암호문의 앞 7바이트와 `crypto{`를 XOR하면 키의 앞 7자를 바로 얻을 수 있다. 키 길이와 known plaintext 길이가 달라 키 전체를 한 번에 복구할 수는 없지만, 출력에서 반복되는 패턴을 보면 키가 `myXORkey`임을 알 수 있다.
+
+**Step 1 — 키 복구**
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string hex = "0e0b213f26041e480b26217f27342e175d0e070a3c5b103e2526217f27342e175d0e077e263451150104";
+    string known = "crypto{";
+    string s;
+    string key;
+
+    for (int i = 0; i < hex.length(); i += 2)
+    {
+        s += (char)stoi(hex.substr(i, 2), nullptr, 16);
+    }
+
+    for (int i = 0; i < s.length(); i++)
+    {
+        key += s[i] ^ known[i % known.length()];
+    }
+
+    cout << key;
+}
+```
+
+**Step 2 — 복구한 키로 복호화**
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string hex = "0e0b213f26041e480b26217f27342e175d0e070a3c5b103e2526217f27342e175d0e077e263451150104";
+    string s;
+    string key = "myXORkey";
+
+    for (int i = 0; i < hex.length(); i += 2)
+    {
+        s += (char)stoi(hex.substr(i, 2), nullptr, 16);
+    }
+
+    for (int i = 0; i < s.length(); i++)
+    {
+        cout << (char)(s[i] ^ key[i % key.length()]);
+    }
+}
+```
+
+플래그 `crypto{1f_y0u_Kn0w_En0uGH_y0u_Kn0w_1t_4ll}`가 나온다.
