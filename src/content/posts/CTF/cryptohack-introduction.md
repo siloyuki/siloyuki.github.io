@@ -195,7 +195,7 @@ string Xor_Hex(string a, string b)
 
 ### 9. Favourite byte
 
-hex 문자열을 디코딩한 뒤, 0~255 키로 브루트포스 XOR해 플래그를 찾는 문제다.
+hex 문자열을 디코딩한 뒤, 0~255 키로 노가다(멋있는 말로 브루트포스) XOR해 플래그를 찾는 문제다.
 
 ```cpp
 #include <iostream>
@@ -227,7 +227,7 @@ int main()
 
 ### 10. You're My Type
 
-반복 키 XOR 암호문에서 키를 복구하는 문제다.
+키를 모르는 XOR 암호문에서 키를 찾고, 그 키로 복호화하는 문제다.
 
 `s.length()`와 `known.length()`가 다르다는 점을 이용해야 한다. 플래그가 `crypto{`로 시작한다는 걸 알고 있으므로, 암호문과 `crypto{`를 XOR하면 키의 일부를 복구할 수 있다.
 
