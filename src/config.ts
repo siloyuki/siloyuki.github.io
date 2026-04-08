@@ -70,7 +70,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Discord",
 			icon: "fa6-brands:discord",
-			url: "https://discord.com/users/choi._3",
+			url: "https://discord.com/users/963947436160729119",
 		},
 	],
 };
