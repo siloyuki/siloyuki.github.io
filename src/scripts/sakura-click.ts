@@ -58,7 +58,7 @@ function spawnPetal(cx: number, cy: number, index: number): void {
 
   el.innerHTML = makePetalSvg(color, svgRotation);
   el.style.cssText =
-    'position:fixed;left:0;top:0;pointer-events:none;z-index:99999;will-change:transform,opacity;';
+    `position:fixed;left:0;top:0;pointer-events:none;z-index:99999;will-change:transform,opacity;transform:translate(${cx - 9}px,${cy - 9}px);`;
   document.body.appendChild(el);
 
   // Spread petals in a full circle with slight randomness
