@@ -45,6 +45,10 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
+			name: "개발",
+			url: "/development/",
+		},
+		{
 			name: "GitHub",
 			url: "https://github.com/siloyuki",
 			external: true,
