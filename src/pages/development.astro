@@ -3,65 +3,89 @@ import { Icon } from "astro-icon/components";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 const games = [
-  {
-    title: "Wakku Wakku",
-    description: "Apps in Toss 해커톤 출품작. 토스 앱 내에서 즐기는 캐릭터 수집 및 미니게임.",
-    tags: ["React", "TypeScript", "Web"],
-    image: "/assets/games/wakku-wakku.png",
-    playUrl: "https://siloyuki.github.io/wakku-wakku-preview/",
-    repoUrl: "https://github.com/siloyuki/wakku-wakku",
-    status: "출품 완료",
-  },
-  {
-    title: "BeatGrid",
-    description: "Unity 2D 리듬 총알 지옥 프로토타입. 박자에 맞춰 적을 피하고 공격하는 PC 게임.",
-    tags: ["Unity", "C#", "Rhythm"],
-    image: null,
-    playUrl: null,
-    repoUrl: "https://github.com/siloyuki/BeatGrid",
-    status: "개발 중",
-  },
+	{
+		title: "Wakku Wakku",
+		description:
+			"토스 앱 환경에서 즐길 수 있도록 만든 캐릭터 수집 및 미니게임 웹 앱.",
+		tags: ["React", "TypeScript", "Web"],
+		image: "/assets/games/wakku-wakku.png",
+		playUrl: "https://siloyuki.github.io/wakku-wakku-preview/",
+		repoUrl: "https://github.com/siloyuki/wakku-wakku",
+		status: "공개 완료",
+	},
+	{
+		title: "BeatGrid",
+		description:
+			"박자 단위 이동과 그리드 기반 패턴 회피를 결합한 Unity 2D PC 게임 프로토타입.",
+		tags: ["Unity", "C#", "Rhythm"],
+		image: null,
+		playUrl: null,
+		repoUrl: "https://github.com/siloyuki/BeatGrid",
+		status: "개발 중",
+	},
+	{
+		title: "JJAPGEKI",
+		description:
+			"아케이드 리듬게임 O.N.G.E.K.I의 플레이 경험을 PC 환경에서 구현한 프로젝트. 아두이노 기반 전용 컨트롤러를 직접 설계하고 제작.",
+		tags: ["Unity", "C#", "Arduino"],
+		image: null,
+		playUrl: null,
+		repoUrl: null,
+		status: "2024.03 - 2024.09",
+	},
+	{
+		title: "FO Protect",
+		description:
+			"웨이브 사이 인터벌에 장비 업그레이드와 스탯 강화를 진행하는 무한 웨이브 디펜스 게임.",
+		tags: ["Unity", "C#"],
+		image: null,
+		playUrl: null,
+		repoUrl: null,
+		status: "2023.03 - 2023.09",
+	},
 ];
 ---
 
 <MainGridLayout title="개발" description="siloyuki가 만든 게임들">
-  <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative">
-    <div class="card-base z-10 px-9 py-6 relative w-full">
-      <h1 class="text-3xl font-bold text-90 mb-8">개발</h1>
-      <div class="grid grid-cols-1 gap-6">
-        {games.map((game) => (
-          <div class="card-base rounded-[var(--radius-large)] overflow-hidden flex flex-col md:flex-row">
-            {game.image && (
-              <div class="md:w-[40%] max-h-[14rem] md:max-h-none overflow-hidden">
-                <img
-                  src={game.image}
-                  alt={`${game.title} 스크린샷`}
-                  class="w-full h-full object-cover"
-                />
+  <div class="flex flex-col gap-5">
+    <div class="px-2">
+      <h1 class="text-3xl font-bold text-90">개발</h1>
+    </div>
+    <div class="grid grid-cols-1 gap-5">
+      {games.map((game) => (
+        <article class="card-base rounded-lg overflow-hidden flex flex-col md:flex-row">
+          {game.image && (
+            <div class="md:w-[40%] max-h-[14rem] md:max-h-none overflow-hidden">
+              <img
+                src={game.image}
+                alt={`${game.title} 스크린샷`}
+                class="w-full h-full object-cover"
+              />
+            </div>
+          )}
+          {!game.image && (
+            <div class="md:w-[40%] h-40 md:h-auto flex items-center justify-center bg-black/5 dark:bg-white/5">
+              <Icon name="material-symbols:sports-esports-outline-rounded" class="text-6xl text-black/20 dark:text-white/20" />
+            </div>
+          )}
+          <div class="flex flex-col justify-between p-6 flex-1">
+            <div>
+              <div class="flex items-center gap-3 mb-2 flex-wrap">
+                <h2 class="text-xl font-bold text-90">{game.title}</h2>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] font-medium">
+                  {game.status}
+                </span>
               </div>
-            )}
-            {!game.image && (
-              <div class="md:w-[40%] h-40 md:h-auto flex items-center justify-center bg-black/5 dark:bg-white/5">
-                <Icon name="material-symbols:sports-esports-outline-rounded" class="text-6xl text-black/20 dark:text-white/20" />
-              </div>
-            )}
-            <div class="flex flex-col justify-between p-6 flex-1">
-              <div>
-                <div class="flex items-center gap-3 mb-2">
-                  <h2 class="text-xl font-bold text-90">{game.title}</h2>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] font-medium">
-                    {game.status}
+              <p class="text-75 text-sm mb-4">{game.description}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                {game.tags.map((tag) => (
+                  <span class="text-xs px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/10 text-50">
+                    {tag}
                   </span>
-                </div>
-                <p class="text-75 text-sm mb-4">{game.description}</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {game.tags.map((tag) => (
-                    <span class="text-xs px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/10 text-50">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                ))}
               </div>
+            </div>
+            {(game.playUrl || game.repoUrl) && (
               <div class="flex gap-3">
                 {game.playUrl && (
                   <a
@@ -74,20 +98,22 @@ const games = [
                     플레이
                   </a>
                 )}
-                <a
-                  href={game.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn-plain flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium active:scale-95 transition border border-black/10 dark:border-white/10"
-                >
-                  <Icon name="fa6-brands:github" class="text-lg" />
-                  GitHub
-                </a>
+                {game.repoUrl && (
+                  <a
+                    href={game.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-plain flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium active:scale-95 transition border border-black/10 dark:border-white/10"
+                  >
+                    <Icon name="fa6-brands:github" class="text-lg" />
+                    GitHub
+                  </a>
+                )}
               </div>
-            </div>
+            )}
           </div>
-        ))}
-      </div>
+        </article>
+      ))}
     </div>
   </div>
 </MainGridLayout>
